@@ -1,0 +1,2 @@
+# CorpPlatform
+django test 
