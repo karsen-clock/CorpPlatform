@@ -1,0 +1,4 @@
+{"ResponseStatus":{"Timestamp":"\/Date(1440820233149+0800)\/","Ack":"Success","Errors":[],"Extension":[]},"CorpID":"198","CorpID_EndorsementID":"dan","TravelPassengerInfo":[{"CorpAuthorize_EndorsementPassportID":28741,"CorpAuthorize_EndorsementID":20210,"ProductType":1,"PassportName":"张三"},{"CorpAuthorize_EndorsementPassportID":28742,"CorpAuthorize_EndorsementID":20210,"ProductType":1,"PassportName":"李四"},{"CorpAuthorize_EndorsementPassportID":28743,"CorpAuthorize_EndorsementID":20210,"ProductType":1,"PassportName":"王五"}],"FlightInfo":[{"DepartBeginDate":"\/Date(1434902400000-0000)\/","DepartEndDate":"\/Date(1451577600000-0000)\/","ReturnBeginDate":"\/Date(-62135596800000-0000)\/","ReturnEndDate":"\/Date(-62135596800000-0000)\/","FlightWay":1,"DepartCityID":"上海","DestCityID":"北京","Price":5000.0300,"Discount":9.0,"Currency":"CNY","Airline":"CA"}],"HotelInfo":[],"TrainInfo":[],"ProcessResult":[{"ResultCode":"T","Message":"获取审批单成功"}]}
+
+
+1015989100017

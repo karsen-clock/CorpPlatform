@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Flight Test Platform</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+      
+      <!--引入自定义css-->
+      <link href="static/css/common.css" rel="stylesheet">
+
+      <!--引入fileinputcss-->
+      <link href="static/css/default.css" rel="stylesheet">
+      <link href="static/css/fileinput.css" rel="stylesheet">
+      
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+   <div class="mycontainer">
+       <div class="headcontainer">
+ 		 <ul class="nav nav-tabs nav-justified">
+   		<li class="homeNav {{navActiveStatusDic.home}}"><a href="/home">Home</a></li>  
+    	<li class="dropdown {{navActiveStatusDic.mock}}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Mock<b class="caret"></b>
+            </a>
+        	<ul class="dropdown-menu">
+   				<li><a href="/configPage">New Mock</a></li>
+   				<li><a href="/getInterfaceList">Mocked Service</a></li>
+   				<li><a href="/runService">Run Service</a></li>
+        	</ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Jmeter Report<b class="caret"></b>
+            </a>
+        	<ul class="dropdown-menu">
+   				<li><a href="#">SummaryReport</a></li>
+   				<li><a href="#">DetailsReport</a></li>
+        	</ul>
+        </li>
+   		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>
+        <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
+   </ul>
+ </div>
+<div class="bodycontainer">
+	<form action="/configPage" name="addform" method="POST" id="addMockForm" class="form-horizontal" role="form" >
+		{% csrf_token %}
+   		<div class="form-group">
+      		<label for="protocol" class="col-lg-2 control-label">Protocol</label>
+			<div class="col-lg-2 input-lg">
+      			<select class="form-control" name="Protocol" id="Protocol">
+         			<option>http</option>
+         			<option>https</option>
+         			<option>socket</option>
+      			</select>
+      		</div>
+   		</div>
+   		<div class="form-group">
+   			<label for="interface name" class="col-lg-2 control-label">InterfaceName</label>
+   			<div class="col-lg-4 input-lg">
+   				<input type="text" class="form-control" id="InterfaceName" name="InterfaceName" placeholder="fill short name for the interface to be mocked,unique name">
+   			</div>
+   		</div>
+   		<div class="form-group">
+   			<label for="business name" class="col-lg-2 control-label">BusinessName</label>
+   			<div class="col-lg-4 input-lg">
+   				<input type="text" class="form-control" id="BusinessName" name="BusinessName" placeholder="fill this for business mark">
+   			</div>
+   		</div>   		
+   		<div class="form-group">
+   			<label for="interface config" class="col-lg-2 control-label">MockConfig</label>
+   			<div class="col-lg-6 input-lg" style="margin-bottom: 18%;">
+   				<textarea class="form-control" name="ConfigParameter" id="ConfigParameter" rows="10" placeholder="please refer to help page to fill this "></textarea>
+   			</div>   			
+   		</div>
+   		<div class="form-group" >
+   			<label class="col-lg-2 control-label" for="Submit">Submit</label>
+   				<button type="button" class="btn btn-primary" onclick="addInterface()">Submit</button>
+   		</div>
+  		
+</form>
+
+<form enctype="multipart/form-data" action="/uploadResponseFile" name="uploadResponseFile" method="POST" id="uploadResponseFile" class="form-horizontal" role="form" style="margin-top:30%px;margin-left:18%">
+  		{% csrf_token %} 		
+   		<div class="form-group" style="width:50%">
+		<input id="file-0a" class="file" type="file" name="uploadResponseFile" multiple data-min-file-count="1">
+   		</div>
+   		<!--div class="form-group" >
+   			<label class="col-lg-2 control-label" for="Upload">Upload</label>
+   			<button type="button" class="btn btn-primary" onclick="">Upload</button>
+   		</div-->  		       		   		  		    
+</form>
+   		<div class="form-group  center-block">
+   			<label class="col-lg-2 control-label"></label>
+   			<div class="col-lg-5 {{display}}"><label>{{submitMessageDic}}</label></div>
+   		</div>
+   		
+      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+      <!-- 包括所有已编译的插件 -->
+      <script src="static/bootstrap/js/bootstrap.min.js"></script>
+      
+      <!-- 自定义js -->
+      <script src="static/js/getInterfaceList.js"></script>
+      
+      <!-- fileinput js -->
+      <script src="static/js/fileinput.js"></script>
+      <script src="static/js/fileinput_locale_es.js"></script>    
+       <script src="static/js/fileinputinitial.js"></script>       
+   </div>
+   </div>
+   </body>
+
+</html>

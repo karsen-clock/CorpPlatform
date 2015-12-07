@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Flight Test Platform</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+      <!--引入自定义css-->
+      <link href="static/css/common.css" rel="stylesheet">
+      
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+   <div class="mycontainer">
+   <div class="headcontainer">
+	 <ul class="nav nav-tabs nav-justified">
+   		<li class="homeNav {{navActiveStatusDic.home}}"><a href="/home">Home</a></li>  
+    	<li class="dropdown {{navActiveStatusDic.mock}}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Mock<b class="caret"></b>
+            </a>
+        	<ul class="dropdown-menu">
+   				<li><a href="/configPage">New Mock</a></li>
+   				<li><a href="/getInterfaceList">Mocked Service</a></li>
+   				<li><a href="/runService">Run Service</a></li>
+        	</ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Jmeter Report<b class="caret"></b>
+            </a>
+        	<ul class="dropdown-menu">
+   				<li><a href="#">SummaryReport</a></li>
+   				<li><a href="#">DetailsReport</a></li>
+        	</ul>
+        </li>
+   		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>
+        <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
+   </ul>
+	</div>
+	<div class="bodycontainer">
+		<lable>ConfigParameter</label> 		      		
+<pre>
+
+--下面是基本配置，一般只用这种就可以
+[
+{
+ "request" :
+ {
+   "uri" : "/foo/h",--在这里填写接口的URI
+	 "text":
+	  {
+	  "startsWith":"" --在这里填写请求匹配项，支持多种参数(endwith contains)
+	  }
+    },
+"Response" :--指定响应参数
+{
+	"file":"test.response"--在这里填写你指定响应报文保存的文件名(文件将在下一步上传，文件必须以.response结尾)
+}
+}
+]
+
+
+------------------------------------------分隔线----------------------------------------
+--相对复杂的配置，根据需要选择
+[
+{
+ "request" :--指定请求匹配项进行路由,所有项均为非必填，根据需要进行配置
+ {
+   "uri" : "/foo/h",
+	"method" : "post",
+	"version": "HTTP/1.0",
+	"headers" : 
+    {
+    "content-type" : "application/json"
+    },
+	"cookies" :
+    {
+     "login" : "true"
+     },
+	 "queries" : 
+      {
+       "param" : "blah"
+      },
+	"forms" :
+      {
+       "name" : "foo"
+       },
+	 "text":
+	  {
+	  "startsWith":"<TestRequest>"
+	  }
+    },
+"Response" :--指定响应参数
+{
+   "latency": 
+       {
+         "duration": 1,
+         "unit": "second"
+       },
+	"file":"test.response"--上传文件的文件 名
+}
+}
+]
+
+	</pre>
+	<br>
+	<label>ResponseDataFile eg.</label>
+   			<pre>
+   	--根据实际接口返回格式配置 ，不限定json或xml，必须将文件保存为以.response结尾
+   			{
+	"ResponseStatus": {
+		"Timestamp": "\/Date(1440820233149+0800)\/",
+		"Ack": "Success",
+		"Errors": [],
+		"Extension": []
+	},
+	"CorpID": "198",
+	"CorpID_EndorsementID": "dan",
+	"TravelPassengerInfo": [{
+		"CorpAuthorize_EndorsementPassportID": 28741,
+		"CorpAuthorize_EndorsementID": 20210,
+		"ProductType": 1,
+		"PassportName": "张三"
+	},
+	{
+		"CorpAuthorize_EndorsementPassportID": 28742,
+		"CorpAuthorize_EndorsementID": 20210,
+		"ProductType": 1,
+		"PassportName": "李四"
+	},
+	{
+		"CorpAuthorize_EndorsementPassportID": 28743,
+		"CorpAuthorize_EndorsementID": 20210,
+		"ProductType": 1,
+		"PassportName": "王五"
+	}],
+	"FlightInfo": [{
+		"DepartBeginDate": "\/Date(1434902400000-0000)\/",
+		"DepartEndDate": "\/Date(1451577600000-0000)\/",
+		"ReturnBeginDate": "\/Date(-62135596800000-0000)\/",
+		"ReturnEndDate": "\/Date(-62135596800000-0000)\/",
+		"FlightWay": 1,
+		"DepartCityID": "上海",
+		"DestCityID": "北京",
+		"Price": 5000.0300,
+		"Discount": 9.0,
+		"Currency": "CNY",
+		"Airline": "CA"
+	}],
+	"HotelInfo": [],
+	"TrainInfo": [],
+	"ProcessResult": [{
+		"ResultCode": "T",
+		"Message": "获取审批单成功"
+	}]
+}
+   			</pre>
+   	</div>
+   	</div>
+      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <!-- 包括所有已编译的插件 -->
+      <script src="static/bootstrap/js/bootstrap.min.js"></script>
+   </body>
+</html>

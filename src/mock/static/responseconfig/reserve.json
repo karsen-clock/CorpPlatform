@@ -1,0 +1,12 @@
+[{
+	"request": {
+		"uri": "/foo/h"
+	},
+	"response": {
+		"latency": {
+			"duration": 1,
+			"unit": "second"
+		},
+		"file": "test.response"
+	}
+}]
