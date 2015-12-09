@@ -15,11 +15,15 @@ background-color:black;
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #555;
+    background-color:black;
+    border:0;
     cursor: default;
     }
 .btn-primary{
  background-color:#663366;
  }
+ 
+
  .modal-header{
 padding:9px 15px;
 border-bottom:1px solid #eee;
@@ -48,7 +52,7 @@ background-color:black;
 
  body{
  background-color:black;
- color:yellowgreen;
+ color:#CCCC33;
  }
  .nav{
  font:26px;
