@@ -1,28 +1,49 @@
 table{
-     table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
- }
- td{
-     word-break:keep-all;/* 不换行 */
-     white-space:nowrap;/* 不换行 */
-     overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
-     text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
- }
-pre{
-color:yellowgreen;
-boder:0;
-background-color:black;
+table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+}
+.tablehead{
+background-color:#428bca;
+color:white;
+}
+td{
+word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+.navbar{
+width:50%;
+margin:0 auto;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+border:0;
+color:white;
+cursor: default;
+background-color:#428bca;
 }
 
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: #555;
-    background-color:white;
-    border:0;
-    cursor: default;
-    }
+.nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus{
+border:none;
+}
+.nav-tabs.nav-justified > li > a{
+border:none;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+background-color:#428bca;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+background-color:#428bca;
+color:#B0171F;
+}
 
- 
-
- .modal-header{
+a{
+color:white;
+}
+.list-group-item
+{
+border:0;
+}
+.modal-header{
 padding:9px 15px;
 border-bottom:1px solid #eee;
 background-color:#428bca;
@@ -35,24 +56,17 @@ color:white;
 color:black;
 }
 .mycontainer{
-margin-left:15%;
-margin-right:15%;
-color:yellowgreen;
-background-color:#000000;
 }
 .headcontainer{
-
+background-color:#428bca;
+color:white;
 }
 .bodycontainer{
-margin-top:10%;
-background-color:black;
+width:80%;
+margin:0 auto;
+margin-top:5%;
 }
-
- body{
- background-color:black;
- color:#CCCC33;
- }
- .nav{
- font:26px;
- font-weight:bold;
- }
+.nav{
+font:26px;
+font-weight:bold;
+}

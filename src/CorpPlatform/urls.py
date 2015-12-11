@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^editInterfaceConfig','mock.views.editInterfaceConfig',name='editInterfaceConfig'),
     url(r'^help','mock.views.helpPage',name='helpPage'),
     url(r'^runService','mock.views.runService',name='runservice'),
+    url(r'^links','mock.views.links',name='links'),
     url(r'^deleteInterfaceConfig','mock.views.deleteInterfaceConfig',name='deleteInterfaceConfig'),
 ]

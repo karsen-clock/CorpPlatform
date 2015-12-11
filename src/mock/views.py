@@ -16,7 +16,7 @@ from time import ctime
 BASE_DIR = os.path.dirname(__file__)
 
 def configPage(request):
-    navActiveStatusDic={'home':'','mock':'','more':'','help':''}
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
     submitMessage=''
     display='alert alert-success hidden'
 #     print (timezone.now())
@@ -54,7 +54,7 @@ def configPage(request):
 
 
 def getInterfaceList(request):
-    navActiveStatusDic={'home':'','mock':'','more':'','help':''}
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
     if 'home' in request.get_full_path():
         navActiveStatusDic['home'] ='active'
         navActiveStatusDic['mock'] =''  
@@ -73,9 +73,14 @@ def getInterfaceList(request):
 
 
 def helpPage(request):
-    navActiveStatusDic={'home':'','mock':'','more':'','help':''}
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
     navActiveStatusDic['help'] ='active' 
     return render(request,'helpPage.html',{'navActiveStatusDic':navActiveStatusDic})
+
+def links(request):
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
+    navActiveStatusDic['links'] ='active' 
+    return render(request,'links.html',{'navActiveStatusDic':navActiveStatusDic})
 
 def deleteInterfaceConfig(request):
     deleteDic={}

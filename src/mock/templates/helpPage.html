@@ -19,6 +19,7 @@
    <body>
    <div class="mycontainer">
    <div class="headcontainer">
+   <div class="navbar">
 	 <ul class="nav nav-tabs nav-justified">
    		<li class="homeNav {{navActiveStatusDic.home}}"><a href="/home">Home</a></li>  
     	<li class="dropdown {{navActiveStatusDic.mock}}">
@@ -40,12 +41,14 @@
    				<li><a href="#">DetailsReport</a></li>
         	</ul>
         </li>
+        <li class="linksNav {{navActiveStatusDic.links}}"><a href="/links">Links</a></li>
    		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>
-        <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
+        <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>      
    </ul>
-	</div>
+   </div>
+  </div>
 	<div class="bodycontainer">
-		<lable>ConfigParameter</label> 		      		
+		<label>ConfigParameter</label> 		      		
 <pre>
 
 --下面是基本配置，一般只用这种就可以

@@ -19,6 +19,7 @@
    <body>
    <div class="mycontainer">
     <div class="headcontainer">
+    <div class="navbar">
 	 <ul class="nav nav-tabs nav-justified">
    		<li class="homeNav {{navActiveStatusDic.home}}"><a href="/home">Home</a></li>  
     	<li class="dropdown {{navActiveStatusDic.mock}}">
@@ -40,9 +41,11 @@
    				<li><a href="#">DetailsReport</a></li>
         	</ul>
         </li>
+        <li class="linksNav {{navActiveStatusDic.links}}"><a href="/links">Links</a></li>
    		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>
         <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
    </ul>
+	</div>
 	</div>
 	<div class="bodycontainer">
 <form action="/runServices" method="GET" id="runServiceForm" class="form-inline" role="form" style="margin-top:5%;">

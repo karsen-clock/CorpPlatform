@@ -18,6 +18,7 @@
    <body>
    <div class="mycontainer">
     <div class="headcontainer">
+    <div class="navbar">
 	  <ul class="nav nav-tabs nav-justified">
    		<li class="homeNav {{navActiveStatusDic.home}}"><a href="/home">Home</a></li>  
     	<li class="dropdown {{navActiveStatusDic.mock}}">
@@ -48,9 +49,12 @@
    				<li><a href="#">InternalFlight</a></li>
         	</ul>
         </li>
+        <li class="linksNav {{navActiveStatusDic.links}}"><a href="/links">Links</a></li>
+   		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>        
         <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
-   </ul>
-   
+   	</ul>
+	</div>
+	</div>   
    <div class="bodycontainer">
 	<form action="/getInterfaceList" method="get" id="getInterfaceForm" class="form-inline" role="form" style="margin-top: 5%;">
 		{% csrf_token %}
@@ -74,8 +78,8 @@
 	</form>	
 
 
-<table class="table">
-<caption>Interface Mocked</caption>
+<table class="table table-striped table-condensed">
+<caption></caption>
 <thead>
 	<tr>
 		<th>Protocol Type</th>
@@ -200,7 +204,6 @@ Delete
 </button>
 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel
 </button>
-</div>
 </div>
 </div>
 </div>
