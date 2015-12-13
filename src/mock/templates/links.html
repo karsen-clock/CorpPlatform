@@ -32,13 +32,22 @@
    				<li><a href="/runService">Run Service</a></li>
         	</ul>
         </li>
-        <li class="dropdown">
+               <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Jmeter Report<b class="caret"></b>
             </a>
         	<ul class="dropdown-menu">
-   				<li><a href="#">SummaryReport</a></li>
-   				<li><a href="#">DetailsReport</a></li>
+   				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Summary_Report/" target="_blank">SummaryReport</a></li>
+   				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Details_Report/" target="_blank">DetailsReport</a></li>
+        	</ul>
+        </li>
+   		<li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Flight<b class="caret"></b>
+            </a>
+        	<ul class="dropdown-menu">
+   				<li><a href="#">DomesticFlight</a></li>
+   				<li><a href="#">IntlFlight</a></li>
         	</ul>
         </li>
         <li class="linksNav {{navActiveStatusDic.links}}"><a href="/links">Links</a></li>
@@ -48,72 +57,74 @@
    </div>
   </div>
 	<div class="bodycontainer">
-	<table class="table table-bordered table-condensed">
-		<thead class="tablehead">
-			<tr>
+	<table class="table table-striped table-bordered">
+	<caption><label>Frequently Used Links</label></caption>
+		<thead>
+			<tr class="info">
 			<th>Online</th>
 			<th>Offline</th>
 			<th>APP</th>
 			<th>Clog</th>
-			<th>Environment Info</th>
+			<th>Environment Config</th>
 			<th>Management Tool</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody">
 			<tr>
-			<td><a href="http://ct.fat4.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">FAT4</a></td>
-			<td><a href="http://service.fat4.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" class="list-group-item">FAT4</a></td>
-			<td><a href="http://ct.fat4.qa.nt.ctripcorp.com/m"  target="_blank" class="list-group-item">FAT4</a></td>
-			<td><a href="http://clog.fws.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">FAT</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">qates</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">ITSM</a></td>						
+			<td><a href="http://ct.fat4.qa.nt.ctripcorp.com"  target="_blank">FAT4</a></td>
+			<td><a href="http://service.fat4.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank">FAT4</a></td>
+			<td><a href="http://ct.fat4.qa.nt.ctripcorp.com/m"  target="_blank" >FAT4</a></td>
+			<td><a href="http://logging.fws.qa.nt.ctripcorp.com"  target="_blank" >FAT</a></td>
+			<td><a href="http://qate.qa.nt.ctripcorp.com/"  target="_blank" >Qates</a></td>
+			<td><a href="http://itsmportal.sh.ctriptravel.com"  target="_blank" >ITSM</a></td>						
 			</tr>
 			<tr>
-			<td><a href="http://ct.fat11.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">FAT11</a></td>
-			<td><a href="http://service.fat11.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" class="list-group-item">FAT11</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="http://clog.uat.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">UAT</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">uates</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">CITSM</a></td>				
+			<td><a href="http://ct.fat11.qa.nt.ctripcorp.com"  target="_blank" >FAT11</a></td>
+			<td><a href="http://service.fat11.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" >FAT11</a></td>
+			<td><a href="#"  target="_blank" ></a></td>
+			<td><a href="http://logging.uat.qa.nt.ctripcorp.com"  target="_blank" >UAT</a></td>
+			<td><a href="http://es.ops.uat.qa.nt.ctripcorp.com/"  target="_blank" >Uates</a></td>
+			<td><a href="http://citsm.sh.ctriptravel.com/"  target="_blank" >CITSM</a></td>				
 			</tr>
 			<tr>
-			<td><a href="http://ct.fat24.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">FAT24</a></td>
-			<td><a href="http://service.fat24.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" class="list-group-item">FAT24</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="http://clog.ctrip.com"  target="_blank" class="list-group-item">PRO</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">GOV</a></td>	
+			<td><a href="http://ct.fat24.qa.nt.ctripcorp.com"  target="_blank" >FAT24</a></td>
+			<td><a href="http://service.fat24.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" >FAT24</a></td>
+			<td><a href="#"  target="_blank" ></a></td>
+			<td><a href="http://logging.ctripcorp.com/" target="_blank">PRO</a></td>
+			<td><a href="http://gov.fws.qa.nt.ctripcorp.com/"  target="_blank" >GOV</a></td>
+			<td><a href="http://croller.sh.ctripcorp.com/"  target="_blank" >Croller</a></td>				
 			</tr>
 			<tr>
-			<td><a href="http://ct.fat26.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">FAT26</a></td>
-			<td><a href="http://service.fat26.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">Respository</a></td>				
+			<td><a href="http://ct.fat26.qa.nt.ctripcorp.com"  target="_blank" >FAT26</a></td>
+			<td><a href="http://service.fat26.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" ></a></td>
+			<td><a href="#"  target="_blank" >广告位</a></td>
+			<td><a href="#"  target="_blank" >广告位</a></td>
+			<td><a href="http://repository.soa.ctripcorp.com/service/config/list?serviceId=100"  target="_blank" >SOA Respository</a></td>	
+			<td><a href="http://code.ctripcorp.com/plugins/gitblit/repositories/"  target="_blank" >Code Repositories</a></td>				
 			</tr>
 			<tr>
-			<td><a href="http://ct.fat92.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">FAT92</a></td>
-			<td><a href="http://service.fat92.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">JOB Pannel</a></td>				
+			<td><a href="http://ct.fat92.qa.nt.ctripcorp.com"  target="_blank" >FAT92</a></td>
+			<td><a href="http://service.fat92.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" ></a></td>
+			<td><a href="#"  target="_blank" >广告位</a></td>
+			<td><a href="#"  target="_blank" >广告位</a></td>
+			<td><a href="http://cms.fx.fws.qa.nt.ctripcorp.com/GOV/JobPanel"  target="_blank" >JOB Pannel</a></td>	
+			<td><a href="http://git.dev.sh.ctripcorp.com/"  target="_blank" >GitLab</a></td>				
 			</tr>
 			<tr>
-			<td><a href="http://ct.uat.qa.nt.ctripcorp.com"  target="_blank" class="list-group-item">UAT</a></td>
-			<td><a href="http://service.uat.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" class="list-group-item">UAT</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">qates</a></td>				
+			<td><a href="http://ct.uat.qa.nt.ctripcorp.com"  target="_blank" >UAT</a></td>
+			<td><a href="http://service.uat.qa.nt.ctripcorp.com/cii/cii.home"  target="_blank" >UAT</a></td>
+			<td><a href="#"  target="_blank" >广告位</a></td>
+			<td><a href="#"  target="_blank" >广告位</a></td>
+			<td><a href="http://dbtools.ops.ctripcorp.com/DataDic/Home/Search?key=TravelTicket&db_type=0&object_type=1"  target="_blank" >DB Dictionary</a></td>
+			<td><a href="http://datamigdb.dev.sh.ctripcorp.com/"  target="_blank" >Cdatax</a></td>				
 			</tr>	
 			<tr>
-			<td><a href="http://ct.ctrip.com"  target="_blank" class="list-group-item">PRO</a></td>
-			<td><a href="http://server/"  target="_blank" class="list-group-item">PRO</a></td>
-			<td><a href="http://ct.ctrip.com/m"  target="_blank" class="list-group-item">APP</a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item"></a></td>
-			<td><a href="#"  target="_blank" class="list-group-item">qates</a></td>				
+			<td><a href="http://ct.ctrip.com"  target="_blank" >PRO</a></td>
+			<td><a href="http://server/"  target="_blank" >PRO</a></td>
+			<td><a href="http://ct.ctrip.com/m"  target="_blank" >APP</a></td>
+			<td><a href="#"  target="_blank" >广告位</a></td>
+			<td><a href="http://dbtools.ops.ctripcorp.com/"  target="_blank" >DB Web</a></td>
+			<td><a href="http://mgr.release.ctripcorp.com/ropv2/home/"  target="_blank" >Rop</a></td>				
 			</tr>			
 		</tbody>
 	</table>
