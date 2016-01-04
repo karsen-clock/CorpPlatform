@@ -26,5 +26,7 @@ urlpatterns = [
     url(r'^help','mock.views.helpPage',name='helpPage'),
     url(r'^runService','mock.views.runService',name='runservice'),
     url(r'^links','mock.views.links',name='links'),
+    url(r'^dataCount','mock.views.dataCount',name='dataCount'),    
+    url(r'^getDataCount','mock.views.getDataCount',name='getDataCount'),
     url(r'^deleteInterfaceConfig','mock.views.deleteInterfaceConfig',name='deleteInterfaceConfig'),
 ]

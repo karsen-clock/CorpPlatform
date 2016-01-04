@@ -16,7 +16,7 @@ from time import ctime
 BASE_DIR = os.path.dirname(__file__)
 
 def configPage(request):
-    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':'','dataCount':''}
     submitMessage=''
     display='alert alert-success hidden'
 #     print (timezone.now())
@@ -54,7 +54,7 @@ def configPage(request):
 
 
 def getInterfaceList(request):
-    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':'','dataCount':''}
     if 'home' in request.get_full_path():
         navActiveStatusDic['home'] ='active'
         navActiveStatusDic['mock'] =''  
@@ -73,14 +73,24 @@ def getInterfaceList(request):
 
 
 def helpPage(request):
-    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':'','dataCount':''}
     navActiveStatusDic['help'] ='active' 
     return render(request,'helpPage.html',{'navActiveStatusDic':navActiveStatusDic})
 
 def links(request):
-    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':''}
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':'','dataCount':''}
     navActiveStatusDic['links'] ='active' 
     return render(request,'links.html',{'navActiveStatusDic':navActiveStatusDic})
+
+def dataCount(request):
+    navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':'','dataCount':''}
+    navActiveStatusDic['dataCount'] ='active' 
+    return render(request,'dataCount.html',{'navActiveStatusDic':navActiveStatusDic})
+
+def getDataCount(request):
+    categories={'feb':[{'bjs':'10'},{'dd':'30'}]}
+    return JsonResponse(categories)
+
 
 def deleteInterfaceConfig(request):
     deleteDic={}
