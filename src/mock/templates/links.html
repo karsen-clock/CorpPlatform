@@ -3,14 +3,14 @@
    <head>
       <title>Flight Test Platform</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- 引入 Bootstrap -->
+      <!-- 寮曞叆 Bootstrap -->
       <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 
-      <!--引入自定义css-->
+      <!--寮曞叆鑷畾涔塩ss-->
       <link href="static/css/common.css" rel="stylesheet">
       
-      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
-      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!-- HTML5 Shim 鍜�Respond.js 鐢ㄤ簬璁�IE8 鏀寔 HTML5鍏冪礌鍜屽獟浣撴煡璇�-->
+      <!-- 娉ㄦ剰锛�濡傛灉閫氳繃 file://  寮曞叆 Respond.js 鏂囦欢锛屽垯璇ユ枃浠舵棤娉曡捣鏁堟灉 -->
       <!--[if lt IE 9]>
          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -39,6 +39,7 @@
         	<ul class="dropdown-menu">
    				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Summary_Report/" target="_blank">SummaryReport</a></li>
    				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Details_Report/" target="_blank">DetailsReport</a></li>
+   				<li><a href="/buildJenkins" target="_blank">RunTest</a></li>
         	</ul>
         </li>
    		<li class="dropdown">
@@ -51,9 +52,10 @@
         	</ul>
         </li>
         <li class="linksNav {{navActiveStatusDic.links}}"><a href="/links">Links</a></li>
-        <li class="dataCount {{navActiveStatusDic.dataCount}}"><a href="dataCount">DataCount</a></li>
+        <li class="dataCount {{navActiveStatusDic.dataCount}}"><a href="dataCount">Report</a></li>
    		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>
         <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
+        <li class="feedBack {{navActiveStatusDic.help}}"><a href="mailto:xx@qq.com">Feedback</a></li>
    </ul>
    </div>
   </div>
@@ -97,7 +99,7 @@
 			</tr>
 			<tr>
 			<td><a href="http://ct.fat26.qa.nt.ctripcorp.com"  target="_blank" >FAT26</a></td>
-			<td><a href="http://service.fat26.qa.nt.ctripcorp.com/cii/cii.asp"  target="_blank" ></a></td>
+			<td><a href="http://membersint.members.fat47.qa.nt.ctripcorp.com/offlineauthlogin/login.aspx"  target="_blank" >Offline Login</a></td>
 			<td><a href="#"  target="_blank" >广告位</a></td>
 			<td><a href="#"  target="_blank" >广告位</a></td>
 			<td><a href="http://repository.soa.ctripcorp.com/service/config/list?serviceId=100"  target="_blank" >SOA Respository</a></td>	
@@ -113,7 +115,7 @@
 			</tr>
 			<tr>
 			<td><a href="http://ct.uat.qa.nt.ctripcorp.com"  target="_blank" >UAT</a></td>
-			<td><a href="http://service.uat.qa.nt.ctripcorp.com/cii/cii.asp"  target="_blank" >UAT</a></td>
+			<td><a href="http://membersint.members.uat.qa.nt.ctripcorp.com/offlineauthlogin/login.aspx"  target="_blank" >UAT</a></td>
 			<td><a href="#"  target="_blank" >广告位</a></td>
 			<td><a href="#"  target="_blank" >广告位</a></td>
 			<td><a href="http://dbtools.ops.ctripcorp.com/DataDic/Home/Search?key=TravelTicket&db_type=0&object_type=1"  target="_blank" >DB Dictionary</a></td>
@@ -131,9 +133,9 @@
 	</table>
 </div>
   </div>
-      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-      <script src="https://code.jquery.com/jquery.js"></script>
-      <!-- 包括所有已编译的插件 -->
+      <!-- jQuery (Bootstrap 鐨�JavaScript 鎻掍欢闇�寮曞叆 jQuery) -->
+      <script src="static/js/jquery.min.js"></script>
+      <!-- 鍖呮嫭鎵�湁宸茬紪璇戠殑鎻掍欢 -->
       <script src="static/bootstrap/js/bootstrap.min.js"></script>
    </body>
 </html>

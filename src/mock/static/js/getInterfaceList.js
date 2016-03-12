@@ -11,6 +11,16 @@ function runservice(){
 document.getElementById("runServiceForm").submit();
 };
 
+//增加文件框校验仅能输入字母和数据
+function validateInput(input)
+{
+	var re=/^[A-Za-z0-9]*$/;
+	if(re.test(input.value)==false){
+	       $("#validConfirm").modal("hide");
+	       $("#validConfirm").modal("show");
+		input.value="";
+	} 
+}
 //删除确认框提示
 function getTableDelete(currentTd){
 	var currentTr = currentTd.parentNode.parentNode.parentNode; 

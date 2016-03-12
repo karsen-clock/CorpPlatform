@@ -1,5 +1,15 @@
 eclipse.preferences.version=1
+encoding//src/api/migrations/0001_initial.py=utf-8
 encoding//src/mock/form.py=utf-8
-encoding//src/mock/templates/dataCount.html=UTF-8
+encoding//src/mock/migrations/0001_initial.py=utf-8
+encoding//src/mock/migrations/0002_auto_20151128_1526.py=utf-8
+encoding//src/mock/migrations/0003_interface_businessname.py=utf-8
+encoding//src/mock/static/css/common.css=UTF-8
+encoding//src/mock/templates/automationTrend.html=UTF-8
+encoding//src/mock/templates/getInterfaceList.html=UTF-8
+encoding//src/mock/templates/helpPage.html=UTF-8
+encoding//src/mock/templates/index.html=UTF-8
+encoding//src/mock/templates/links.html=UTF-8
+encoding//src/mock/templates/runservice.html=UTF-8
 encoding//src/mock/views.py=utf-8
 encoding/<project>=UTF-8

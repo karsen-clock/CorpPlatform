@@ -12,3 +12,6 @@ class interface(models.Model):
     updatetime=models.DateTimeField(auto_now_add = True)
     isvalid=models.BooleanField()
     
+    
+    
+    

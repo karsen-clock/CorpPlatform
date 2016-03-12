@@ -8,8 +8,11 @@ import json,time,sys,os,random,subprocess,re,datetime
 # from django.http import HttpResponse
 # from .form import GetInterfaceList
 from mock.models import interface
+from api.models import reportData
 from time import ctime
-
+import urllib
+import urllib.parse
+import urllib.request
 
 
 # Create your views here.
@@ -85,11 +88,128 @@ def links(request):
 def dataCount(request):
     navActiveStatusDic={'home':'','mock':'','more':'','help':'','links':'','dataCount':''}
     navActiveStatusDic['dataCount'] ='active' 
-    return render(request,'dataCount.html',{'navActiveStatusDic':navActiveStatusDic})
+    return render(request,'automationTrend.html',{'navActiveStatusDic':navActiveStatusDic})
 
 def getDataCount(request):
-    categories={'feb':[{'bjs':'10'},{'dd':'30'}]}
-    return JsonResponse(categories)
+    startDate=request.POST.get('StartDate')
+    endDate=request.POST.get('EndDate')
+    print(request.POST.get('StartDate'))
+    print(request.POST.get('EndDate'))
+    #filter(CreateTime__lte=endDate)
+    queryData=reportData.objects.filter(CreateTime__gte=startDate).filter(CreateTime__lte=endDate).values('BuildNo','TotalCases','FailureCases','SuccessRate','AverageTime','MinTime','MaxTime','AverageLatency','MinLatency','MaxLatency')
+    print(queryData)
+    categoriesRoot={}
+    categoriesList=[]
+    totalCasesDic={}
+    totalCasesList=[]
+    failureCasesDic={}
+    failureCasesList=[]
+    successRateDic={}
+    successRateList=[]
+    successRateBuildNoList=[]
+    subSuccessRateBuildNoList=[]
+    averageTimeDic={}
+    averageTimeList=[]
+    minTimeDic={}
+    minTimeList=[]
+    maxTimeDic={}
+    maxTimeList=[]
+    averageLatencyDic={}
+    averageLatencyList=[]
+    minLatencyDic={}
+    minLatencyList=[]
+    maxLatencyDic={}
+    maxLatencyList=[]
+    casesList=[]
+    rateList=[]
+    timeList=[]
+    
+    for buildQuery in queryData:
+        print(buildQuery)
+        subSuccessRateBuildNoList=[]
+        categoriesList.append(str(buildQuery['BuildNo']))
+        totalCasesList.append(int(buildQuery['TotalCases']))
+        
+        failureCasesList.append(int(buildQuery['FailureCases']))
+        
+        successRateList.append(float(buildQuery['SuccessRate']))   
+        subSuccessRateBuildNoList.append(str(buildQuery['BuildNo']))
+        subSuccessRateBuildNoList.append(float(buildQuery['SuccessRate']))
+        successRateBuildNoList.append(subSuccessRateBuildNoList)
+        
+                
+        averageTimeList.append(int(buildQuery['AverageTime']))
+        
+        minTimeList.append(int(buildQuery['MinTime']))
+        
+        maxTimeList.append(int(buildQuery['MaxTime']))
+
+        averageLatencyList.append(int(buildQuery['AverageLatency']))
+        
+        minLatencyList.append(int(buildQuery['MinLatency']))
+        
+        maxLatencyList.append(int(buildQuery['MaxLatency']))
+                          
+    totalCasesDic['name']='TotalTestCases'
+    totalCasesDic['data']=totalCasesList
+    
+    failureCasesDic['name']='FailureTestCaes'
+    failureCasesDic['data']=failureCasesList
+    
+    successRateDic['name']='SuccessRate'
+    successRateDic['data']=successRateList
+           
+    averageTimeDic['name']='AverageTime'
+    averageTimeDic['data']=averageTimeList
+    
+    minTimeDic['name']='MinTime'
+    minTimeDic['data']=minTimeList
+ 
+    maxTimeDic['name']='MaxTime'
+    maxTimeDic['data']=maxTimeList
+
+    averageLatencyDic['name']='AverageLatency'
+    averageLatencyDic['data']=averageLatencyList
+    
+    minLatencyDic['name']='MinLatency'
+    minLatencyDic['data']=minLatencyList
+ 
+    maxLatencyDic['name']='MaxLatency'
+    maxLatencyDic['data']=maxLatencyList
+        
+    casesList.append(totalCasesDic)
+    casesList.append(failureCasesDic)
+
+    rateList.append(successRateDic)
+   
+    timeList.append(averageTimeDic)
+    timeList.append(minTimeDic)
+    timeList.append(maxTimeDic)    
+    timeList.append(averageLatencyDic)
+    timeList.append(minLatencyDic) 
+    timeList.append(maxLatencyDic) 
+            
+    categoriesRoot['categories']=categoriesList
+    categoriesRoot['casesCount']=casesList
+    categoriesRoot['rate']=rateList
+    categoriesRoot['time']=timeList    
+    categoriesRoot['successRateBuildNo']=successRateBuildNoList
+#     print(categoriesRoot)           
+#     categories={'categories': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],'series':[{
+#     'name': 'Tokyo',
+#       'data': [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+#     }, {
+#       'name': 'New York',
+#       'data': [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+#     }, {
+#      'name': 'Berlin',
+#       'data': [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+#     }, {
+#       'name': 'London',
+#       'data': [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+#     }]}
+    print(categoriesRoot)
+    return JsonResponse(categoriesRoot)
 
 
 def deleteInterfaceConfig(request):
@@ -225,7 +345,7 @@ def DeleteAPIJson(interfaceName):
 
 #run cmd
 def RunCMD(protocol,mode):
-    runCommanderDic = {'http':'moco-runner-0.10.2-standalone.jar http -p 12306 -g','https':'moco-runner-0.10.2-standalone.jar https -p 12307 -g','socket':'moco-runner-0.10.2-standalone.jar socket -p 12308 -g'}
+    runCommanderDic = {'http':'moco-runner-0.10.2-standalone.jar http -p 12306 -g','https':'moco-runner-0.10.2-standalone.jar https -p 12307 ','socket':'moco-runner-0.10.2-standalone.jar socket -p 12308 '}
     stopCommanderDic= {'http':'moco-runner-0.10.2-standalone.jar shutdown -s 12306','https':'moco-runner-0.10.2-standalone.jar shutdown -s 12307','socket':'moco-runner-0.10.2-standalone.jar shutdown -s 12308'}
     portCommanderDic={'http':'12306','https':'12307','socket':'12308'}
     protocol=protocol.lower()
@@ -262,3 +382,14 @@ def ExecuteCMD(cmd):
     returnData=returnData+str(output.decode('GBK'))
     print (returnData)
     return returnData
+
+def buildJenkins(request):
+    test_data = {'token':'3d145266c0d3b8966eac4d5782d150a3','cause':'triggred by user from corp flight test platform'}
+    test_data_urlencode = urllib.parse.urlencode(test_data).encode(encoding='UTF8')
+    requrl = "http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-CtripAutomationJars/build?"
+    try:
+        req = urllib.request.Request(requrl,test_data_urlencode)
+    except:
+        print (sys.exc_info())
+    res_data = urllib.request.urlopen(req)
+    res = res_data.read()

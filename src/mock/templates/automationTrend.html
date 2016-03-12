@@ -44,6 +44,7 @@
         	<ul class="dropdown-menu">
    				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Summary_Report/" target="_blank">SummaryReport</a></li>
    				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Details_Report/" target="_blank">DetailsReport</a></li>
+   				<li><a href="/buildJenkins" target="_blank">RunTest</a></li>
         	</ul>
         </li>
    		<li class="dropdown">
@@ -56,9 +57,10 @@
         	</ul>
         </li>
         <li class="linksNav {{navActiveStatusDic.links}}"><a href="/links">Links</a></li>
-        <li class="dataCount {{navActiveStatusDic.dataCount}}"><a href="dataCount">DataCount</a></li>
+        <li class="dataCount {{navActiveStatusDic.dataCount}}"><a href="dataCount">Report</a></li>
    		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>
         <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
+        <li class="feedBack {{navActiveStatusDic.help}}"><a href="mailto:xx@qq.com">Feedback</a></li>
    </ul>
    </div>
   </div>
@@ -78,14 +80,17 @@
    				<button type="button" class="btn btn-primary" onClick="getDataCountAjax(StartDate.value,EndDate.value)">Search</button>
    		</div>   		
 	</form>	
-	
-		<div id="lineChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="lineChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>	
+		<div id="casesCountlineChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="timelineChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="ratelineChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="successRatebarChart" style="min-width: 300px; height: 400px; margin: 0 auto"></div>	
 		<div id="barChart" style="min-width: 300px; height: 400px; margin: 0 auto"></div>	
     </div>
   </div>
         
       <!-- jQuery (Bootstrap 閻拷JavaScript 閹绘帊娆㈤棁锟筋渽瀵洖鍙�jQuery) -->
-      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="static/js/jquery.min.js"></script>
       <!-- 閸栧懏瀚幍锟芥箒瀹歌尙绱拠鎴犳畱閹绘帊娆�-->
       <script src="static/bootstrap/js/bootstrap.min.js"></script>
       <!--JS閸ユ崘銆�-->
@@ -99,6 +104,8 @@
 	  <script src="static/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 
 	  <script type="text/javascript">
+	$('.form_startdate').datetimepicker('setDate',new Date());
+	$('.form_enddate').datetimepicker('setDate',new Date());	
     $('.form_startdate').datetimepicker({
         //language:  'zh-CN',
         weekStart: 1,
@@ -107,7 +114,9 @@
 		todayHighlight: 1,
 		startView: 2,
 		minView: 2,
-		forceParse: 0
+		forceParse: 0,
+    }).on('click',function(ev){
+    	$('.form_startdate').datetimepicker('setEndDate',$('.form_enddate').val());
     });
         $('.form_enddate').datetimepicker({
         //language:  'zh-CN',
@@ -118,6 +127,8 @@
 		startView: 2,
 		minView: 2,
 		forceParse: 0
+    }).on('click',function(ev){
+    	$('.form_enddate').datetimepicker('setStartDate',$('.form_startdate').val());
     });
 
 	  </script>    	  

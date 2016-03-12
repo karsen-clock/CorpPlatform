@@ -23,8 +23,10 @@ $.ajaxSetup({
 			cache : false,
 			dataType : 'json',
 			success:function(data){
-				alert(data.feb);
-
+				getTestCasesCountDatSource(data.categories,data.casesCount);
+				getTestResponseTimeDatSource(data.categories,data.time);
+				getSuccessRateDatSource(data.categories,data.rate);
+				getSuccessRateBuildNoDatSource(data.successRateBuildNo);
 }
 });
 }

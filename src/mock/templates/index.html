@@ -3,18 +3,18 @@
    <head>
       <title>Flight Test Platform</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- 引入 Bootstrap -->
+      <!-- 寮曞叆 Bootstrap -->
       <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
       
-      <!--引入自定义css-->
+      <!--通用样式设定css-->
       <link href="static/css/common.css" rel="stylesheet">
 
-      <!--引入fileinputcss-->
+      <!--寮曞叆fileinputcss-->
       <link href="static/css/default.css" rel="stylesheet">
       <link href="static/css/fileinput.css" rel="stylesheet">
       
-      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
-      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!-- HTML5 Shim 鍜�Respond.js 鐢ㄤ簬璁�IE8 鏀寔 HTML5鍏冪礌鍜屽獟浣撴煡璇�-->
+      <!-- 娉ㄦ剰锛�濡傛灉閫氳繃 file://  寮曞叆 Respond.js 鏂囦欢锛屽垯璇ユ枃浠舵棤娉曡捣鏁堟灉 -->
       <!--[if lt IE 9]>
          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -43,6 +43,7 @@
         	<ul class="dropdown-menu">
    				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Summary_Report/" target="_blank">SummaryReport</a></li>
    				<li><a href="http://ciapi.qa.nt.ctripcorp.com:8080/job/Corp-Maven-Jmeter/Details_Report/" target="_blank">DetailsReport</a></li>
+   				<li><a href="/buildJenkins" target="_blank">RunTest</a></li>
         	</ul>
         </li>
    		<li class="dropdown">
@@ -55,10 +56,10 @@
         	</ul>
         </li>
         <li class="linksNav {{navActiveStatusDic.links}}"><a href="/links">Links</a></li>
-        <li class="dataCount {{navActiveStatusDic.dataCount}}"><a href="dataCount">DataCount</a></li>
+        <li class="dataCount {{navActiveStatusDic.dataCount}}"><a href="dataCount">Report</a></li>
    		<li class="moreNav {{navActiveStatusDic.more}}"><a href="#">More</a></li>
         <li class="helpNav {{navActiveStatusDic.help}}"><a href="/helpPage">Help</a></li>
-
+        <li class="feedBack {{navActiveStatusDic.help}}"><a href="mailto:xx@qq.com">Feedback</a></li>
    </ul>
  </div>
  </div>
@@ -75,10 +76,25 @@
       			</select>
       		</div>
    		</div>
+   		
+   		<div class="form-group">
+      		<label for="protocol" class="col-lg-2 control-label">ConfigTemplate</label>
+			<div class="col-lg-2 input-lg">
+      			<select class="form-control" name="ConfigTemplate" id="ConfigTemplate" onchange="showConfigParmaeter(ConfigTemplate.value)">
+         			<option>SOA1.0</option>
+         			<option>Proxy-Default</option>
+         			<option>SOA2.0</option>
+         			<option>Form</option>
+         			<option>Redirect</option>
+         			<option>Asynchronous</option>
+      			</select>
+      		</div>
+      </div>
+      		
    		<div class="form-group">
    			<label for="interface name" class="col-lg-2 control-label">InterfaceName</label>
    			<div class="col-lg-4 input-lg">
-   				<input type="text" class="form-control" id="InterfaceName" name="InterfaceName" placeholder="fill short name for the interface to be mocked,unique name">
+   				<input type="text" class="form-control" id="InterfaceName" name="InterfaceName" placeholder="fill short name for the interface to be mocked,unique name" onblur=validateInput(this)>
    			</div>
    		</div>
    		<div class="form-group">
@@ -89,8 +105,30 @@
    		</div>   		
    		<div class="form-group">
    			<label for="interface config" class="col-lg-2 control-label">MockConfig</label>
-   			<div class="col-lg-6 input-lg" style="margin-bottom: 18%;">
-   				<textarea class="form-control" name="ConfigParameter" id="ConfigParameter" rows="10" placeholder="please refer to help page to fill this "></textarea>
+   			<div class="col-lg-6 input-lg" style="margin-bottom: 20%;">
+   				<textarea class="form-control" name="ConfigParameter" id="ConfigParameter" rows="15" onblur=highLightCode()>{
+	"request": {
+		"uri": "/flight-product-searchws/flightsearch.asmx",
+		"xpaths": {
+			"/request/parameters/id/text()": "1"
+		}
+	},
+	"response": {
+		"headers": {
+			"Content-Type": "text/xml;charset=utf-8"
+		},
+		"file": {
+			"charset": "utf-8",
+			"name": "fligtsearch.response"
+		}
+	}
+}</textarea>
+   			</div>   			
+   		</div>
+   		<div class="form-group">
+   			<label for="interface config" class="col-lg-2 control-label">ConfigPreview</label>
+   			<div class="col-lg-6 input-lg" id="preview"  style="height:2%;">
+   			<pre id="result"></pre>
    			</div>   			
    		</div>
    		<div class="form-group" >
@@ -114,20 +152,47 @@
    			<label class="col-lg-2 control-label"></label>
    			<div class="col-lg-5 {{display}}"><label>{{submitMessageDic}}</label></div>
    		</div>
-   		
-      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-      <script src="https://code.jquery.com/jquery.js"></script>
+
+<!-- 定义modal -->>
+<div class="modal fade" id="validConfirm" tabindex="-1" role="dialog" aria-labelledby="validPromot" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+</button>
+<h4 class="modal-title" id="promotModal">
+OK
+</h4>
+</div>
+<div class="modal-body">
+invalid input,only number and characters will be allowed.
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+</div>
+</div>
+</div>
+</div>   		
+      <!-- jQuery (Bootstrap 鐨�JavaScript 鎻掍欢闇�寮曞叆 jQuery) -->
+      <script src="static/js/jquery.min.js"></script>
       <script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
-      <!-- 包括所有已编译的插件 -->
+      <!-- 鍖呮嫭鎵�湁宸茬紪璇戠殑鎻掍欢 -->
       <script src="static/bootstrap/js/bootstrap.min.js"></script>
       
-      <!-- 自定义js -->
+      <!-- 鑷畾涔塲s -->
       <script src="static/js/getInterfaceList.js"></script>
-      
+      <script src="static/js/index.js"></script>
+            
       <!-- fileinput js -->
       <script src="static/js/fileinput.js"></script>
       <script src="static/js/fileinput_locale_es.js"></script>    
-       <script src="static/js/fileinputinitial.js"></script>       
+      <script src="static/js/fileinputinitial.js"></script> 
+      
+      <script>
+      		window.onload=function(){
+      			highLightCode();
+      		}
+      </script>      
    </div>
    </div>
    </body>
