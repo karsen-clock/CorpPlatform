@@ -2,7 +2,7 @@ function showConfigParmaeter(ConfigTemplate){
 	var t=document.getElementById("ConfigParameter");
 	if(ConfigTemplate=="SOA1.0")
 		{
-			var res={
+			var res=[{
 	"request": {
 		"uri": "/flight-product-searchws/flightsearch.asmx",
 		"xpaths": {
@@ -18,24 +18,24 @@ function showConfigParmaeter(ConfigTemplate){
 			"name": "fligtsearch.response"
 		}
 	}
-};
+}];
 		t.value=JSON.stringify(res, null, 4); 
 		}
 	else if(ConfigTemplate=="Proxy-Default")
 		{
-			var res={
+			var res=[{
 					"request": {
 						"uri": "/flight-product-searchws/flightsearch.asmx"
 					},
 					"response": {
 						"proxy": "http://fltws.fws.qa.nt.ctripcorp.com/flight-product-searchws/flightsearch.asmx"
 					}
-				};		
+				}];		
 			t.value=JSON.stringify(res, null, 4); 
 		}
 	else if(ConfigTemplate=="SOA2.0")
 	{
-		var res={
+		var res=[{
 				"description": "这里的response也可以参照SOA1.0指定文件内容响应",
 				"request": {
 					"uri": "/json_response_shortcut"
@@ -45,12 +45,12 @@ function showConfigParmaeter(ConfigTemplate){
 						"foo": "foo"
 					}
 				}
-			};		
+			}];		
 		t.value=JSON.stringify(res, null, 4); 
 	}
 	else if(ConfigTemplate=="Form")
 	{
-		var res={
+		var res=[{
 				"request": {
 					"method": "post",
 					"forms": {
@@ -60,22 +60,22 @@ function showConfigParmaeter(ConfigTemplate){
 				"response": {
 					"text": "foobar"
 				}
-			};
+			}];
 		t.value=JSON.stringify(res, null, 4); 
 	}
 	else if(ConfigTemplate=="Redirect")
 	{
-		var res={
+		var res=[{
 				"request": {
 					"uri": "/redirect"
 				},
 				"redirectTo": "http://www.baidu.com"
-			};
+			}];
 		t.value=JSON.stringify(res, null, 4); 
 	}
 	else if(ConfigTemplate=="Asynchronous")
 	{
-		var res={
+		var res=[{
 				"request": {
 					"uri": "/event"
 				},
@@ -92,12 +92,12 @@ function showConfigParmaeter(ConfigTemplate){
 						}
 					}
 				}
-			};
+			}];
 		t.value=JSON.stringify(res, null, 4); 
 	}
 	else
 	{
-		var res={
+		var res=[{
 				"request": {
 					"uri": {
 						"match": "/proxy/.*"
@@ -109,7 +109,7 @@ function showConfigParmaeter(ConfigTemplate){
 						"unit": "second"
 					}
 				}
-			};
+			}];
 	
 	}
 	$('#result').html(syntaxHighlight(t.value));

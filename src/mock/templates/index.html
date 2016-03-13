@@ -82,11 +82,11 @@
 			<div class="col-lg-2 input-lg">
       			<select class="form-control" name="ConfigTemplate" id="ConfigTemplate" onchange="showConfigParmaeter(ConfigTemplate.value)">
          			<option>SOA1.0</option>
-         			<option>Proxy-Default</option>
          			<option>SOA2.0</option>
          			<option>Form</option>
          			<option>Redirect</option>
          			<option>Asynchronous</option>
+         			<option>Proxy-Default</option>
       			</select>
       		</div>
       </div>
@@ -106,7 +106,7 @@
    		<div class="form-group">
    			<label for="interface config" class="col-lg-2 control-label">MockConfig</label>
    			<div class="col-lg-6 input-lg" style="margin-bottom: 20%;">
-   				<textarea class="form-control" name="ConfigParameter" id="ConfigParameter" rows="15" onblur=highLightCode()>{
+   				<textarea class="form-control" name="ConfigParameter" id="ConfigParameter" rows="15" onblur=highLightCode()>[{
 	"request": {
 		"uri": "/flight-product-searchws/flightsearch.asmx",
 		"xpaths": {
@@ -122,7 +122,7 @@
 			"name": "fligtsearch.response"
 		}
 	}
-}</textarea>
+}]</textarea>
    			</div>   			
    		</div>
    		<div class="form-group">

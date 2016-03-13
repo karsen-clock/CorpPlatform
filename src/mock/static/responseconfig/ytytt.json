@@ -1,0 +1,20 @@
+[
+    {
+        "request": {
+            "uri": "/event"
+        },
+        "response": {
+            "text": "post_foo"
+        },
+        "on": {
+            "complete": {
+                "async": "true",
+                "latency": 1000,
+                "post": {
+                    "url": "http://www.2345.com",
+                    "content": "content"
+                }
+            }
+        }
+    }
+]

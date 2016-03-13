@@ -237,6 +237,7 @@ def editInterfaceConfig(request):
             interfaceNameGet=str(request.POST.get('interfaceName')).strip()
             businessNameGet=str(request.POST.get('businessName')).strip()
             parameterConfigGet=str(request.POST.get('configParameter')).strip()
+            saveResponseFile(interfaceNameGet,parameterConfigGet)
             interface.objects.filter(interfaceName=interfaceNameGet).filter(protocol=protocolGet).update(businessName=businessNameGet,mockConfig=parameterConfigGet,updatetime=timezone.now())
     except: 
         info = '%s || %s' % (sys.exc_info()[0], sys.exc_info()[1])

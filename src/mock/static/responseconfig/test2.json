@@ -1,0 +1,10 @@
+[
+    {
+        "request": {
+            "uri": "/flight-product-searchws/flightsearch.asmx"
+        },
+        "response": {
+            "proxy": "http://fltws.fws.qa.nt.ctripcorp.com/flight-product-searchws/flightsearch.asmx"
+        }
+    }
+]
