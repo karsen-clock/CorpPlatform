@@ -13,6 +13,10 @@ function showConfigParmaeter(ConfigTemplate){
 		"headers": {
 			"Content-Type": "text/xml;charset=utf-8"
 		},
+        "latency": {
+            "duration": 1,
+            "unit": "second"
+          },
 		"file": {
 			"charset": "utf-8",
 			"name": "fligtsearch.response"
